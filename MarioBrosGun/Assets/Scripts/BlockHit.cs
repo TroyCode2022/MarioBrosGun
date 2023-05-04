@@ -5,35 +5,72 @@ public class BlockHit : MonoBehaviour
 {
     public GameObject item;
     public Sprite emptyBlock;
-    public int maxHits = -1;
-    private bool animating;
+    public int maxHits = 1;
+    private bool animating = false;
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (!animating && maxHits != 0 && collision.gameObject.CompareTag("Player"))
-        {
-            if (collision.transform.DotTest(transform, Vector2.up)) {
-                Hit();
-            }
-        }
-    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (!animating && maxHits != 0 && collision.gameObject.CompareTag("Player"))
+    //    {
+    //        if (collision.transform.DotTest(transform, Vector2.up)) {
+    //            Hit();
+    //        }
+    //    }
+    //}
 
-    private void Hit()
+    public void HitBrick(bool isBig)
     {
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.enabled = true; // show if hidden
 
-        maxHits--;
+        if (maxHits != 0)
+        {
 
-        if (maxHits == 0) {
-            spriteRenderer.sprite = emptyBlock;
+            if (isBig)
+            {
+                convertToEmpty(ref spriteRenderer);
+            }
+
+            StartAnimation();
+        }
+        
+    }
+
+    public void hitLucky()
+    {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.enabled = true; // show if hidden
+
+        if (maxHits != 0)
+        {
+
+            convertToEmpty(ref spriteRenderer);
+            Debug.Log(maxHits);
+
+            StartAnimation();
         }
 
-        if (item != null) {
+    }
+
+    private void StartAnimation()
+    {
+        if (item != null)
+        {
             Instantiate(item, transform.position, Quaternion.identity);
         }
 
         StartCoroutine(Animate());
+    }
+
+    private void convertToEmpty(ref SpriteRenderer spriteRenderer)
+    {
+        maxHits--;
+
+        if (maxHits == 0)
+        {
+            spriteRenderer.sprite = emptyBlock;
+        }
+
     }
 
     private IEnumerator Animate()
@@ -65,6 +102,11 @@ public class BlockHit : MonoBehaviour
         }
 
         transform.localPosition = to;
+    }
+
+    public bool isAnimating()
+    {
+        return animating;
     }
 
 }
