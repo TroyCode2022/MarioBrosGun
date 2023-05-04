@@ -5,72 +5,35 @@ public class BlockHit : MonoBehaviour
 {
     public GameObject item;
     public Sprite emptyBlock;
-    public int maxHits = 1;
-    private bool animating = false;
+    public int maxHits = -1;
+    private bool animating;
 
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (!animating && maxHits != 0 && collision.gameObject.CompareTag("Player"))
-    //    {
-    //        if (collision.transform.DotTest(transform, Vector2.up)) {
-    //            Hit();
-    //        }
-    //    }
-    //}
-
-    public void HitBrick(bool isBig)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.enabled = true; // show if hidden
-
-        if (maxHits != 0)
+        if (!animating && maxHits != 0 && collision.gameObject.CompareTag("Player"))
         {
-
-            if (isBig)
-            {
-                convertToEmpty(ref spriteRenderer);
+            if (collision.transform.DotTest(transform, Vector2.up)) {
+                Hit();
             }
-
-            StartAnimation();
         }
-        
     }
 
-    public void hitLucky()
+    private void Hit()
     {
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.enabled = true; // show if hidden
 
-        if (maxHits != 0)
-        {
+        maxHits--;
 
-            convertToEmpty(ref spriteRenderer);
-            Debug.Log(maxHits);
-
-            StartAnimation();
+        if (maxHits == 0) {
+            spriteRenderer.sprite = emptyBlock;
         }
 
-    }
-
-    private void StartAnimation()
-    {
-        if (item != null)
-        {
+        if (item != null) {
             Instantiate(item, transform.position, Quaternion.identity);
         }
 
         StartCoroutine(Animate());
-    }
-
-    private void convertToEmpty(ref SpriteRenderer spriteRenderer)
-    {
-        maxHits--;
-
-        if (maxHits == 0)
-        {
-            spriteRenderer.sprite = emptyBlock;
-        }
-
     }
 
     private IEnumerator Animate()
@@ -102,11 +65,6 @@ public class BlockHit : MonoBehaviour
         }
 
         transform.localPosition = to;
-    }
-
-    public bool isAnimating()
-    {
-        return animating;
     }
 
 }

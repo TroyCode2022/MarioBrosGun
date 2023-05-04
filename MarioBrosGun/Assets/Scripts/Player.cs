@@ -116,25 +116,4 @@ public class Player : MonoBehaviour
         starpower = false;
     }
 
-    //Función para detectar si ha chocado contra un bloque siendo grande
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        //Comprobamos que ha chocado contra un bloque
-        if (collision.gameObject.CompareTag("Brick") || collision.gameObject.CompareTag("LuckyBlock"))
-        {
-            //Comprobamos si el bloque está actualmente en una animación, de ser así no se puede golpear
-            //Tampoco podemos golpearlo desde cualquier lado que no sea desde abajo
-            if (!collision.gameObject.GetComponent<BlockHit>().isAnimating())
-            {
-                if (collision.transform.DotTest(transform, Vector2.down))
-                {
-                    if(collision.gameObject.CompareTag("Brick"))
-                        collision.gameObject.GetComponent<BlockHit>().HitBrick(big);
-                    else
-                        collision.gameObject.GetComponent<BlockHit>().hitLucky();
-                }
-            }
-        }
-    }
-
 }

@@ -3,13 +3,15 @@ using UnityEngine;
 public class Goomba : MonoBehaviour
 {
     public Sprite flatSprite;
+    public GameObject bulletPrefab;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("bEntra");
         if (collision.gameObject.CompareTag("Player"))
         {
             Player player = collision.gameObject.GetComponent<Player>();
-
+            Debug.Log("Goomba tocado saltando");
             if (player.starpower) {
                 Hit();
             } else if (collision.transform.DotTest(transform, Vector2.down)) {
@@ -18,10 +20,21 @@ public class Goomba : MonoBehaviour
                 player.Hit();
             }
         }
+
+        else if (collision.gameObject.CompareTag("Bullet"))
+            Debug.Log("balaso");
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+            Debug.Log("balaso");
+            Hit();
+            Destroy(other.gameObject);
+        }
+            
         if (other.gameObject.layer == LayerMask.NameToLayer("Shell")) {
             Hit();
         }
@@ -43,4 +56,26 @@ public class Goomba : MonoBehaviour
         Destroy(gameObject, 3f);
     }
 
+
+    // Funciones para detectar disparo
+    private void TocadoPorBulletPrefab()
+{
+    Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, transform.localScale, 0f);
+
+    foreach (Collider2D collider in colliders)
+    {
+        if (collider.gameObject == bulletPrefab)
+        {
+            Debug.Log("Tocado por bala");
+            // Haz algo cuando el objeto es tocado por bulletPrefab
+            Destroy(gameObject); // Por ejemplo, destruye el objeto actual
+            break; // Sal del bucle foreach ya que ya se encontró la colisión con bulletPrefab
+        }
+    }
+}
+
+    // void Update()
+    // {
+    //     TocadoPorBulletPrefab();
+    // }
 }
