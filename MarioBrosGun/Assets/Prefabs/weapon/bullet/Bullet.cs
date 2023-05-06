@@ -2,14 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public static class BulletManager {
+    public static float speed = 2f;
+
+    public static void IncreaseSpeed() { 
+        Debug.Log("****INCREMENTANDO VELOCIDAD DE BALAS" );
+        speed = 100f;
+    }
+}
 public class Bullet : MonoBehaviour {
     private new Rigidbody2D rigidbody;
 
-    public static float speed;
 
     void Start() {
         rigidbody = GetComponent<Rigidbody2D>();
-        speed = 5f;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -21,12 +27,12 @@ public class Bullet : MonoBehaviour {
 
     void FixedUpdate()
     {
-        Debug.Log("Current speed: " + speed);
-        rigidbody.MovePosition(transform.position + transform.right * speed * Time.fixedDeltaTime);
+        rigidbody.MovePosition(transform.position + transform.right * BulletManager.speed * Time.fixedDeltaTime);
     }
 
-    public static void IncreaseSpeed(){ 
-        Debug.Log("****INCREMENTANDO VELOCIDAD" );
-        speed = 100f;
-        }
+    public static void IncreaseSpeedBullet()
+    {
+        BulletManager.IncreaseSpeed();
+    }
+
 }

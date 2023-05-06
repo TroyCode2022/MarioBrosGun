@@ -22,7 +22,7 @@ public class BlockHit : MonoBehaviour
 
                 // Incrementamos la velocidad de las balas
                 Debug.Log("Te ha tocado Incrementar velocidad Balas!!");
-                Bullet.IncreaseSpeed();
+                Bullet.IncreaseSpeedBullet();
     
                 }
             }
