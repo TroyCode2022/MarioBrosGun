@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public static class BulletManager {
-    public static float speed = 2f;
+    public static float speed = 25f;
 
     public static void IncreaseSpeed() { 
         Debug.Log("****INCREMENTANDO VELOCIDAD DE BALAS" );

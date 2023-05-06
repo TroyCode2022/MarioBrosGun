@@ -115,7 +115,8 @@ public class Player : MonoBehaviour
 
         float elapsed = 0f;
         float duration = 10f;
-
+       
+        gameObject.transform.GetChild(2).gameObject.SetActive(false); // Desactivar pistola
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
@@ -126,7 +127,7 @@ public class Player : MonoBehaviour
 
             yield return null;
         }
-
+        gameObject.transform.GetChild(2).gameObject.SetActive(true);//Activar pistola
         activeRenderer.spriteRenderer.color = Color.white;
         starpower = false;
     }
