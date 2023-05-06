@@ -6,7 +6,9 @@ public class BlockHit : MonoBehaviour
     public GameObject item;
     public Sprite emptyBlock;
     public int maxHits = -1;
-    private bool animating;
+    private bool animating; 
+    public GameObject bulletPrefab; //TODO: Que no sea una variable publica
+    
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -15,9 +17,17 @@ public class BlockHit : MonoBehaviour
             if (collision.transform.DotTest(transform, Vector2.up)) {
                 Hit();
             }
-        }
-    }
+            // Si el item tiene una tag "fast shot", mostrar un mensaje
+            if (item != null && item.CompareTag("FastShot")) {
 
+                // Incrementamos la velocidad de las balas
+                Debug.Log("Te ha tocado Incrementar velocidad Balas!!");
+                Bullet.IncreaseSpeed();
+    
+                }
+            }
+        }
+    
     private void Hit()
     {
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
@@ -66,5 +76,5 @@ public class BlockHit : MonoBehaviour
 
         transform.localPosition = to;
     }
+    }
 
-}

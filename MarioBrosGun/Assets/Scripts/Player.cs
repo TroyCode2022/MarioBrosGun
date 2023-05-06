@@ -14,11 +14,14 @@ public class Player : MonoBehaviour
     public bool dead => deathAnimation.enabled;
     public bool starpower { get; private set; }
 
+    private Transform pistolTransform; 
+
     private void Awake()
     {
         capsuleCollider = GetComponent<CapsuleCollider2D>();
         deathAnimation = GetComponent<DeathAnimation>();
         activeRenderer = smallRenderer;
+        pistolTransform = transform.GetChild(2);// Obtenemos la pistola
     }
 
     public void Hit()
@@ -52,6 +55,12 @@ public class Player : MonoBehaviour
         capsuleCollider.offset = new Vector2(0f, 0.5f);
 
         StartCoroutine(ScaleAnimation());
+        
+        // Modificación de la posición de Pistol
+        Transform pistolTransform = transform.GetChild(2);
+        if (pistolTransform != null) {
+            pistolTransform.position += new Vector3(0.4f, 0.2f, 0f);
+        }
     }
 
     public void Shrink()
@@ -64,6 +73,12 @@ public class Player : MonoBehaviour
         capsuleCollider.offset = new Vector2(0f, 0f);
 
         StartCoroutine(ScaleAnimation());
+
+        // Modificación de la posición de Pistol
+        Transform pistolTransform = transform.GetChild(2);
+        if (pistolTransform != null) {
+            pistolTransform.position -= new Vector3(0.4f, 0.2f, 0f);
+        }
     }
 
     private IEnumerator ScaleAnimation()
