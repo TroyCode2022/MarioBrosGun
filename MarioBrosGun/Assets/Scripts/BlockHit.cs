@@ -5,7 +5,7 @@ public class BlockHit : MonoBehaviour
 {
     public GameObject item;
     public Sprite emptyBlock;
-    public int maxHits = -1;
+    public int maxHits = 1;
     private bool animating; 
     public GameObject bulletPrefab; //TODO: Que no sea una variable publica
     
@@ -15,36 +15,87 @@ public class BlockHit : MonoBehaviour
         if (!animating && maxHits != 0 && collision.gameObject.CompareTag("Player"))
         {
             if (collision.transform.DotTest(transform, Vector2.up)) {
-                Hit();
-            }
-            // Si el item tiene una tag "fast shot", mostrar un mensaje
-            if (item != null && item.CompareTag("FastShot")) {
-
-                // Incrementamos la velocidad de las balas
-                Debug.Log("Te ha tocado Incrementar velocidad Balas!!");
-                Bullet.IncreaseSpeedBullet();
-    
-                }
+                if (this.gameObject.CompareTag("Brick"))
+                    HitBrick(collision.gameObject.GetComponent<Player>().big);
+                else
+                    hitLucky();
+                
             }
         }
-    
-    private void Hit()
+    }
+
+    public void HitBrick(bool isBig)
     {
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.enabled = true; // show if hidden
 
-        maxHits--;
+        if (maxHits != 0)
+        {
 
-        if (maxHits == 0) {
-            spriteRenderer.sprite = emptyBlock;
+            if (isBig)
+            {
+                convertToEmpty(ref spriteRenderer);
+            }
+
+            StartAnimation();
         }
 
-        if (item != null) {
+    }
+
+    private void StartAnimation()
+    {
+        if (item != null)
+        {
             Instantiate(item, transform.position, Quaternion.identity);
         }
 
         StartCoroutine(Animate());
     }
+
+    public void hitLucky()
+    {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.enabled = true; // show if hidden
+
+        if (maxHits != 0)
+        {
+
+            convertToEmpty(ref spriteRenderer);
+            Debug.Log(maxHits);
+
+            StartAnimation();
+        }
+
+    }
+
+    private void convertToEmpty(ref SpriteRenderer spriteRenderer)
+    {
+        maxHits--;
+
+        if (maxHits == 0)
+        {
+            spriteRenderer.sprite = emptyBlock;
+        }
+
+    }
+
+    //private void Hit()
+    //{
+    //    SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+    //    spriteRenderer.enabled = true; // show if hidden
+
+    //    maxHits--;
+
+    //    if (maxHits == 0) {
+    //        spriteRenderer.sprite = emptyBlock;
+    //    }
+
+    //    if (item != null) {
+    //        Instantiate(item, transform.position, Quaternion.identity);
+    //    }
+
+    //    StartCoroutine(Animate());
+    //}
 
     private IEnumerator Animate()
     {

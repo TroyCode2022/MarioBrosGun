@@ -1,11 +1,28 @@
 using System.Collections;
 using UnityEngine;
 
-public class BlockCoin : MonoBehaviour
+public class BlockPoweUp : MonoBehaviour
 {
+
+    public enum Type
+    {
+        Coin,
+        fastShot
+    }
+    public Type type;
+
     private void Start()
     {
-        GameManager.Instance.AddCoin();
+        switch (type)
+        {
+            case Type.Coin:
+                GameManager.Instance.AddCoin();
+                break;
+
+            case Type.fastShot:
+                Bullet.IncreaseSpeedBullet();
+                break;
+        }
 
         StartCoroutine(Animate());
     }

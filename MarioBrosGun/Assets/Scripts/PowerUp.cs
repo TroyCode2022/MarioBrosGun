@@ -8,6 +8,7 @@ public class PowerUp : MonoBehaviour
         ExtraLife,
         MagicMushroom,
         Starpower,
+        fastShot
     }
 
     public Type type;
@@ -37,6 +38,9 @@ public class PowerUp : MonoBehaviour
 
             case Type.Starpower:
                 player.GetComponent<Player>().Starpower();
+                break;
+            case Type.fastShot:
+                Bullet.IncreaseSpeedBullet();
                 break;
         }
 

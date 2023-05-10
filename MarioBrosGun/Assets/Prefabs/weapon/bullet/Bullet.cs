@@ -7,7 +7,7 @@ public static class BulletManager {
 
     public static void IncreaseSpeed() { 
         Debug.Log("****INCREMENTANDO VELOCIDAD DE BALAS" );
-        speed = 100f;
+        speed = 50f;
     }
 }
 public class Bullet : MonoBehaviour {
