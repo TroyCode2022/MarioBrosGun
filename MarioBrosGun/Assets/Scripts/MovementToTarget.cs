@@ -60,12 +60,20 @@ public class MovementToTarget : MonoBehaviour
             velocity.y *= -1;
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, raycastDistance);
+        //RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, raycastDistance);
+
 
         if (hit.collider != null)
         {
-            if(!hit.collider.gameObject.CompareTag("Player"))
-                Debug.Log("HAY COSAS");
+            if (hit.collider.gameObject.CompareTag("Tuberia"))
+                Debug.Log(hit.collider.gameObject.tag);
         }
+
+        //if (rigidbody.Raycast(Vector2.left))
+        //{
+        //    Debug.Log("AAAAAAAAAA");
+        //}
+
 
 
         rigidbody.MovePosition(rigidbody.position + direction * velocity * Time.fixedDeltaTime);
