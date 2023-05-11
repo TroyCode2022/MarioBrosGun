@@ -47,14 +47,38 @@ public class MovementToTarget : MonoBehaviour
 
     private void FixedUpdate()
     {
-        direction = (target.position - transform.position).normalized;
+        float raycastDistance = 5.0f;
+        //float yPosition = Mathf.Sin(Time.time * 5f) * 3f;
+
+        direction = (transform.position - target.position).normalized;
         velocity.x = direction.x * speed;
         velocity.y = direction.y * speed;
-        Debug.Log("aaa");
-        //direction = Vector2.left;
-        float yPosition = Mathf.Sin(Time.time * 1.5f) * 0.005f;
-        //Vector2 position = transform.position + direction * velocity * Time.deltaTime + Vector2.up * yPosition
+
+        if (target.position.x < transform.position.x)
+            velocity.x *= -1;
+        if (target.position.y < transform.position.y)
+            velocity.y *= -1;
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, raycastDistance);
+
+        if (hit.collider != null)
+        {
+            if(!hit.collider.gameObject.CompareTag("Player"))
+                Debug.Log("HAY COSAS");
+        }
+
+
         rigidbody.MovePosition(rigidbody.position + direction * velocity * Time.fixedDeltaTime);
+
+        
+        if (direction.x < 0f)
+        {
+            transform.localEulerAngles = new Vector3(0f, 180f, 0f);
+        }
+        else if (direction.x > 0f)
+        {
+            transform.localEulerAngles = Vector3.zero;
+        }
 
     }
 

@@ -132,8 +132,8 @@ TextureImporter:
       name: Volador1
       rect:
         serializedVersion: 2
-        x: 192
-        y: 236
+        x: 112
+        y: 228
         width: 16
         height: 16
       alignment: 0
@@ -153,8 +153,8 @@ TextureImporter:
       name: Volador2
       rect:
         serializedVersion: 2
-        x: 208
-        y: 236
+        x: 130
+        y: 228
         width: 16
         height: 16
       alignment: 0

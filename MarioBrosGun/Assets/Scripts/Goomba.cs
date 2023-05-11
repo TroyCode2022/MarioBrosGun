@@ -7,7 +7,6 @@ public class Goomba : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("bEntra");
         if (collision.gameObject.CompareTag("Player"))
         {
             Player player = collision.gameObject.GetComponent<Player>();
@@ -21,8 +20,7 @@ public class Goomba : MonoBehaviour
             }
         }
 
-        else if (collision.gameObject.CompareTag("Bullet"))
-            Debug.Log("balaso");
+        
 
     }
 
