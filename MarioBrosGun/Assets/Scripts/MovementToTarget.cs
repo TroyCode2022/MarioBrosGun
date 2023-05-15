@@ -85,6 +85,7 @@ public class MovementToTarget : MonoBehaviour
                 transform.localEulerAngles = Vector3.zero;
             }
 
+
             rigidbody.MovePosition(rigidbody.position + direction * velocity * Time.fixedDeltaTime);
 
         }
