@@ -4,8 +4,10 @@ public class Koopa : MonoBehaviour
 {
     public Sprite shellSprite;
     public float shellSpeed = 12f;
+    public int health = 5;
 
     private bool shelled;
+    private GameObject bulletPrefab;
     private bool pushed;
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -47,6 +49,20 @@ public class Koopa : MonoBehaviour
         else if (!shelled && other.gameObject.layer == LayerMask.NameToLayer("Shell"))
         {
             Hit();
+        }
+
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+            if (bulletPrefab != other.gameObject)
+            {
+                Debug.Log("balaso");
+                health--;
+                Debug.Log("MENOS health: " + health);
+                if (health == 0)
+                    Hit();
+
+                bulletPrefab = other.gameObject;
+            }
         }
     }
 

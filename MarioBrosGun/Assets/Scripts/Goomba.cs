@@ -3,7 +3,8 @@ using UnityEngine;
 public class Goomba : MonoBehaviour
 {
     public Sprite flatSprite;
-    public GameObject bulletPrefab;
+    private GameObject bulletPrefab;
+    public int health = 2;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -18,9 +19,7 @@ public class Goomba : MonoBehaviour
             } else {
                 player.Hit();
             }
-        }
-
-        
+        }       
 
     }
 
@@ -28,11 +27,17 @@ public class Goomba : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Bullet"))
         {
-            Debug.Log("balaso");
-            Hit();
-            Destroy(other.gameObject);
+            if (bulletPrefab != other.gameObject)
+            {
+                Debug.Log("balaso");
+                health--;
+                Debug.Log("MENOS health: " + health);
+                if (health == 0)
+                    Hit();
+
+                bulletPrefab = other.gameObject;
+            }
         }
-            
         if (other.gameObject.layer == LayerMask.NameToLayer("Shell")) {
             Hit();
         }

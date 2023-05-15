@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 4953937513092463114}
   - component: {fileID: 2262214753697499689}
   - component: {fileID: 3476804150155684021}
-  - component: {fileID: 1326665629888359022}
   - component: {fileID: 8863421987694266431}
   - component: {fileID: 7896048874926067572}
   - component: {fileID: 4306250348273503774}
+  - component: {fileID: 2582966115314635736}
   m_Layer: 7
   m_Name: FlyingEnemie
   m_TagString: Untagged
@@ -127,20 +127,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &1326665629888359022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4953937513092463115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c550231955bbf05489a5cf417ee2af13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flatSprite: {fileID: 21300000, guid: dceda839fbcc74441aef5f93f32bdc1a, type: 3}
-  bulletPrefab: {fileID: 0}
 --- !u!114 &8863421987694266431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,3 +171,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3.5
   direction: {x: -1, y: 0}
+--- !u!114 &2582966115314635736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4953937513092463115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf0b277e7f8b37148adf60c5406212f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
