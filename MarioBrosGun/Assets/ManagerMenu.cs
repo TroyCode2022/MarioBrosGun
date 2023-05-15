@@ -20,7 +20,7 @@ public class ManagerMenu : MonoBehaviour
     
     public void EscenaJuego()
     {
-        SceneManager.LoadScene("Scene1");
+        SceneManager.LoadScene("1-1");
     }
 
     //* NOTA: Esto solo funcionará en una compilación del juego, no en el Editor de Unity
