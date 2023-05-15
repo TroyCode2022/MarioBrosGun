@@ -93,5 +93,4 @@ public class GameManager : MonoBehaviour
     {
         lives++;
     }
-
 }
