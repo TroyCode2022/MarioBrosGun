@@ -1,0 +1,73 @@
+{
+    "name": "ControlMando",
+    "maps": [
+        {
+            "name": "Juego",
+            "id": "dd979808-c347-47ef-b0be-a88e00a0e45a",
+            "actions": [
+                {
+                    "name": "desplazamiento derecha",
+                    "type": "Button",
+                    "id": "f038246d-c316-4f83-bf33-993043df2a9d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b914507b-8e9b-474a-a819-bafe2d993580",
+                    "path": "<Gamepad>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "desplazamiento derecha",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "267e92cc-b766-4d33-b669-20b1bf8efc58",
+                    "path": "<DualShockGamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "desplazamiento derecha",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "New action map1",
+            "id": "857b15fd-02d7-479d-b3b0-333ebe6de98d",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "5b5b94af-3ed9-4f77-9493-39b7a2f01457",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0d4adaf9-ec90-42e9-b7dd-764c0aac30f5",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
