@@ -10,11 +10,30 @@ public class PlayerWeapon : MonoBehaviour
     private float nextShot = 0.0f;
     private static float reloadTime = 0.3f;
     private bool shooting = false;
+    private AudioSource audioShot;
 
     // Start is called before the first frame update
     void Start()
     {
         
+        
+    }
+
+    void Awake()
+    {
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+
+        // Comprueba si hay al menos dos componentes de audio
+        if (audioSources.Length >= 1)
+        {
+            // Asigna el segundo componente de audio al campo "audioJump"
+            audioShot = audioSources[0];
+        }
+        else
+        {
+            // Maneja el caso en el que no haya suficientes componentes de audio
+            Debug.LogError("No se encontró el segundo componente de audio.");
+        }
     }
 
     // Update is called once per frame
@@ -23,7 +42,9 @@ public class PlayerWeapon : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             shooting = true;
-            //CheckFiring();
+            // Reproduce shot sound
+            audioShot.Play();
+
         }
 
         if(Input.GetMouseButtonUp(0))

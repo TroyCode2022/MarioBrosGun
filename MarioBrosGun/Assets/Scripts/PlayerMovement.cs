@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 velocity;
     private float inputAxis;
 
+    private AudioSource audioJump;
+
     public float moveSpeed = 8f;
     public float maxJumpHeight = 5f;
     public float maxJumpTime = 1f;
@@ -27,6 +29,23 @@ public class PlayerMovement : MonoBehaviour
         camera = Camera.main;
         rigidbody = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
+        audioJump = GetComponent<AudioSource>();
+        
+        //*Nota: Obtenemos asi los audios por si hay mas de uno a futuro
+        // Obtén todos los componentes de tipo AudioSource adjuntos al objeto
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+
+        // Comprueba si hay al menos dos componentes de audio
+        if (audioSources.Length >= 1)
+        {
+            // Asigna el segundo componente de audio al campo "audioJump"
+            audioJump = audioSources[0];
+        }
+        else
+        {
+            // Maneja el caso en el que no haya suficientes componentes de audio
+            Debug.LogError("No se encontró el segundo componente de audio.");
+        }
     }
 
     private void OnEnable()
@@ -102,6 +121,8 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = jumpForce;
             jumping = true;
+            //Reproduce jump sound
+            audioJump.Play();
         }
     }
 
