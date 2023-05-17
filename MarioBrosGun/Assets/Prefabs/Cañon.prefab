@@ -125,8 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0730b8bdb2ab9b47b38d959b7a248b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bala: {fileID: 0}
-  spawner: {fileID: 0}
+  reloadTime: 2.5
+  bala: {fileID: 2642279433350688713, guid: 1a1aa2d69c5630f4e8979a26ad31d622, type: 3}
 --- !u!1 &3682171579189294390
 GameObject:
   m_ObjectHideFlags: 0

@@ -61,7 +61,6 @@ public class BlockHit : MonoBehaviour
         {
 
             convertToEmpty(ref spriteRenderer);
-            Debug.Log(maxHits);
 
             StartAnimation();
         }

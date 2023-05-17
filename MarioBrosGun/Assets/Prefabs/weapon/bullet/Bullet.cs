@@ -6,7 +6,6 @@ public static class BulletManager {
     public static float speed = 25f;
 
     public static void IncreaseSpeed() { 
-        Debug.Log("****INCREMENTANDO VELOCIDAD DE BALAS" );
         speed = 50f;
     }
 }
@@ -21,7 +20,6 @@ public class Bullet : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        Debug.Log("Hetocad con bala " + collision.gameObject.name);
         Destroy(gameObject);
     }
 
