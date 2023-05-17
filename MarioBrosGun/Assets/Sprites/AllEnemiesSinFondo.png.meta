@@ -170,6 +170,69 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: BigBala
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 789
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc835c7d3aa5b874d9a0e2836a38a94b
+      internalID: -1504840257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBalaRojo
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 811
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5faeb00a10603b74c82f45781de54f9a
+      internalID: 1457901149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBalaRojizo
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 811
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06ac5cf09b84b5e488d434722a21bc64
+      internalID: 2093973771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -182,7 +245,10 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Volador1: 1831610836
+      BigBalaRojo: 1457901149
+      BigBalaRojizo: 2093973771
       Volador2: -1279050109
+      BigBala: -1504840257
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
