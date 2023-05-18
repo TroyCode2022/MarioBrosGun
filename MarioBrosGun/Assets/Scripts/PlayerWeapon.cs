@@ -43,7 +43,7 @@ public class PlayerWeapon : MonoBehaviour
         {
             shooting = true;
             // Reproduce shot sound
-            audioShot.Play();
+            
 
         }
 
@@ -59,9 +59,9 @@ public class PlayerWeapon : MonoBehaviour
         }
     }
 
-    private void CheckFiring() { 
-        
-        
+    private void CheckFiring() {
+
+        audioShot.Play();
         GameObject bullet = Instantiate(bulletPrefab);
         bullet.transform.position = spawner.position;
         bullet.transform.rotation = transform.rotation;
