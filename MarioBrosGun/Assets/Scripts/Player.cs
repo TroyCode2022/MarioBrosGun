@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
         pistolTransform = transform.GetChild(2);// Obtenemos la pistola
     }
 
+    // Manejo cuando Mario es alcanzado por un enemigo
     public void Hit()
     {
         if (!dead && !starpower)
@@ -36,6 +37,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    // Muerte de Mario
     public void Death()
     {
         smallRenderer.enabled = false;
@@ -44,7 +46,7 @@ public class Player : MonoBehaviour
 
         GameManager.Instance.ResetLevel(3f);
     }
-
+    // Hacer crecer a mario y modificar la posición de la pistola
     public void Grow()
     {
         smallRenderer.enabled = false;
@@ -62,7 +64,8 @@ public class Player : MonoBehaviour
             pistolTransform.position += new Vector3(0.4f, 0.2f, 0f);
         }
     }
-
+    
+    // Disminuir tamaño 
     public void Shrink()
     {
         smallRenderer.enabled = true;

@@ -9,18 +9,6 @@ public class Koopa : MonoBehaviour
     private bool shelled;
     private GameObject bulletPrefab;
     private bool pushed;
-    
-
-    //private void Update()
-    //{
-    //    Rigidbody2D rb = GetComponent<Rigidbody2D>();
-    //    if (rb.velocity.magnitude > 0f && shelled && !pushed)
-    //    {
-    //        Vector2 direction = GetComponent<EntityMovement>().direction;
-    //        PushShell(direction);
-            
-    //    }
-    //}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -31,7 +19,7 @@ public class Koopa : MonoBehaviour
             if (player.starpower) {
                 Hit();
             } else if (collision.transform.DotTest(transform, Vector2.down)) {
-                EnterShell(collision);
+                EnterShell();
             }  else {
                 player.Hit();
             }
@@ -67,7 +55,9 @@ public class Koopa : MonoBehaviour
         {
             if (bulletPrefab != other.gameObject)
             {
+                Debug.Log("balaso");
                 health--;
+                Debug.Log("MENOS health: " + health);
                 if (health == 0)
                     Hit();
 
@@ -76,15 +66,13 @@ public class Koopa : MonoBehaviour
         }
     }
 
-    private void EnterShell(Collision2D other)
+    private void EnterShell()
     {
         shelled = true;
 
         GetComponent<SpriteRenderer>().sprite = shellSprite;
         GetComponent<AnimatedSprite>().enabled = false;
         GetComponent<EntityMovement>().enabled = false;
-        gameObject.tag = "Shell";
-       
     }
 
     private void PushShell(Vector2 direction)
@@ -98,6 +86,7 @@ public class Koopa : MonoBehaviour
         movement.speed = shellSpeed;
         movement.enabled = true;
 
+        gameObject.layer = LayerMask.NameToLayer("Shell");
     }
 
     private void Hit()

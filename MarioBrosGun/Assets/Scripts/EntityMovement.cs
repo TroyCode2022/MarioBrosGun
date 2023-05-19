@@ -30,15 +30,15 @@ public class EntityMovement : MonoBehaviour
         enabled = false;
     }
 
+    private void OnEnable()
+    {
+        rigidbody.WakeUp();
+    }
+
     private void OnDisable()
     {
         rigidbody.velocity = Vector2.zero;
         rigidbody.Sleep();
-    }
-
-    private void OnEnable()
-    {
-        rigidbody.WakeUp();
     }
 
     private void FixedUpdate()

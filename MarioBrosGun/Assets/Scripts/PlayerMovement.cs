@@ -3,6 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
+    public VariableJoystick variableJoystick; // Android controller
     private new Camera camera;
     private new Rigidbody2D rigidbody;
     private new Collider2D collider;
@@ -94,7 +95,8 @@ public class PlayerMovement : MonoBehaviour
     private void HorizontalMovement()
     {
         // accelerate / decelerate
-        inputAxis = Input.GetAxis("Horizontal");
+        //!OJO cuando GENEREMOS LA APK SE SUMARA LA VARIABLE JOYSTICK MIENTRAS NO
+        inputAxis = Input.GetAxis("Horizontal")+variableJoystick.Horizontal;
         velocity.x = Mathf.MoveTowards(velocity.x, inputAxis * moveSpeed, moveSpeed * Time.deltaTime);
 
         // check if running into a wall
@@ -110,14 +112,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void GroundedMovement()
+    public void GroundedMovement(bool isAndroid=false)
     {
         // prevent gravity from infinitly building up
         velocity.y = Mathf.Max(velocity.y, 0f);
         jumping = velocity.y > 0f;
 
         // perform jump
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") || isAndroid)
         {
             velocity.y = jumpForce;
             jumping = true;
@@ -126,10 +128,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void ApplyGravity()
+    public void ApplyGravity(bool isAndroid=false)
     {
         // check if falling
-        bool falling = velocity.y < 0f || !Input.GetButton("Jump");
+        bool falling = velocity.y < 0f || !Input.GetButton("Jump") || isAndroid;
         float multiplier = falling ? 2f : 1f;
 
         // apply gravity and terminal velocity

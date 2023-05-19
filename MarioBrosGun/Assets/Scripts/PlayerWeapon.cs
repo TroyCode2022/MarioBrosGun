@@ -12,12 +12,6 @@ public class PlayerWeapon : MonoBehaviour
     private bool shooting = false;
     private AudioSource audioShot;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-        
-    }
 
     void Awake()
     {
@@ -43,7 +37,7 @@ public class PlayerWeapon : MonoBehaviour
         {
             shooting = true;
             // Reproduce shot sound
-            
+            audioShot.Play();
 
         }
 
@@ -59,9 +53,9 @@ public class PlayerWeapon : MonoBehaviour
         }
     }
 
-    private void CheckFiring() {
-
-        audioShot.Play();
+    private void CheckFiring() { 
+        
+        
         GameObject bullet = Instantiate(bulletPrefab);
         bullet.transform.position = spawner.position;
         bullet.transform.rotation = transform.rotation;

@@ -19,12 +19,7 @@ public class Goomba : MonoBehaviour
             } else {
                 player.Hit();
             }
-        }
-    
-        if (collision.gameObject.CompareTag("Shell"))
-        {
-            Hit();
-        }
+        }       
 
     }
 
@@ -34,14 +29,18 @@ public class Goomba : MonoBehaviour
         {
             if (bulletPrefab != other.gameObject)
             {
+                Debug.Log("balaso");
                 health--;
+                Debug.Log("MENOS health: " + health);
                 if (health == 0)
                     Hit();
 
                 bulletPrefab = other.gameObject;
             }
         }
-        
+        if (other.gameObject.layer == LayerMask.NameToLayer("Shell")) {
+            Hit();
+        }
     }
 
     private void Flatten()
@@ -70,6 +69,7 @@ public class Goomba : MonoBehaviour
     {
         if (collider.gameObject == bulletPrefab)
         {
+            Debug.Log("Tocado por bala");
             // Haz algo cuando el objeto es tocado por bulletPrefab
             Destroy(gameObject); // Por ejemplo, destruye el objeto actual
             break; // Sal del bucle foreach ya que ya se encontró la colisión con bulletPrefab

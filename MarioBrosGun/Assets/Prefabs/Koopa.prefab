@@ -144,7 +144,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.33333334}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1.5}
     newSize: {x: 1, y: 1.5}
     adaptiveTilingThreshold: 0.5
@@ -152,7 +152,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.25, y: 1.8}
+  m_Size: {x: 1.25, y: 1.25}
   m_EdgeRadius: 0
 --- !u!114 &3611261760737888607
 MonoBehaviour:
@@ -168,7 +168,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shellSprite: {fileID: 21300000, guid: f882caca8db1d9547be2c030f5a6b82e, type: 3}
   shellSpeed: 12
-  health: 5
 --- !u!114 &3611261760737888596
 MonoBehaviour:
   m_ObjectHideFlags: 0

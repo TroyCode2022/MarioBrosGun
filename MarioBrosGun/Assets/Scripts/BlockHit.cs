@@ -27,7 +27,7 @@ public class BlockHit : MonoBehaviour
     public void HitBrick(bool isBig)
     {
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        //spriteRenderer.enabled = true; // show if hidden
+        spriteRenderer.enabled = true; // show if hidden
 
         if (maxHits != 0)
         {
@@ -61,6 +61,7 @@ public class BlockHit : MonoBehaviour
         {
 
             convertToEmpty(ref spriteRenderer);
+            Debug.Log(maxHits);
 
             StartAnimation();
         }

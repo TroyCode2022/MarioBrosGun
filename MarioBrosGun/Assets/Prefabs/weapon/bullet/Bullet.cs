@@ -20,6 +20,7 @@ public class Bullet : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
+        Debug.Log("Hetocad con bala " + collision.gameObject.name);
         Destroy(gameObject);
     }
 
