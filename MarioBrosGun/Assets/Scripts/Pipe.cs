@@ -7,7 +7,7 @@ public class Pipe : MonoBehaviour
     public KeyCode enterKeyCode = KeyCode.S;
     public Vector3 enterDirection = Vector3.down;
     public Vector3 exitDirection = Vector3.zero;
-    //private AudioSource audioPipe;
+    private AudioSource audioPipe;
 
     private void OnTriggerStay2D(Collider2D other)
     {
@@ -26,7 +26,7 @@ public class Pipe : MonoBehaviour
         {
             audioSources[0].Play();
             // Asigna el segundo componente de audio al campo "audioJump"
-            //audioPipe = audioSources[0];
+            audioPipe = audioSources[0];
         }
         player.GetComponent<PlayerMovement>().enabled = false;
 
@@ -60,6 +60,7 @@ public class Pipe : MonoBehaviour
 
         Vector3 startPosition = player.position;
         Vector3 startScale = player.localScale;
+        audioPipe.Play();
 
         while (elapsed < duration)
         {

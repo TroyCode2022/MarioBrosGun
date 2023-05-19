@@ -47,19 +47,23 @@ public class Player : MonoBehaviour
 
     public void Grow()
     {
-        smallRenderer.enabled = false;
-        bigRenderer.enabled = true;
-        activeRenderer = bigRenderer;
+        if (!big)
+        {
+            smallRenderer.enabled = false;
+            bigRenderer.enabled = true;
+            activeRenderer = bigRenderer;
 
-        capsuleCollider.size = new Vector2(1f, 2f);
-        capsuleCollider.offset = new Vector2(0f, 0.5f);
+            capsuleCollider.size = new Vector2(1f, 2f);
+            capsuleCollider.offset = new Vector2(0f, 0.5f);
 
-        StartCoroutine(ScaleAnimation());
-        
-        // Modificación de la posición de Pistol
-        Transform pistolTransform = transform.GetChild(2);
-        if (pistolTransform != null) {
-            pistolTransform.position += new Vector3(0.4f, 0.2f, 0f);
+            StartCoroutine(ScaleAnimation());
+
+            // Modificación de la posición de Pistol
+            Transform pistolTransform = transform.GetChild(2);
+            if (pistolTransform != null)
+            {
+                pistolTransform.position = transform.GetChild(4).position;
+            }
         }
     }
 
@@ -77,7 +81,8 @@ public class Player : MonoBehaviour
         // Modificación de la posición de Pistol
         Transform pistolTransform = transform.GetChild(2);
         if (pistolTransform != null) {
-            pistolTransform.position -= new Vector3(0.4f, 0.2f, 0f);
+            Debug.Log("Pistola se mueve");
+            pistolTransform.position = transform.GetChild(3).position;
         }
     }
 
