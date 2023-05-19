@@ -117,19 +117,20 @@ public class PlayerMovement : MonoBehaviour
         jumping = velocity.y > 0f;
 
         // perform jump
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump")  /*||PulseJoystickButton1()*/)
         {
             velocity.y = jumpForce;
             jumping = true;
             //Reproduce jump sound
             audioJump.Play();
         }
+
     }
 
     private void ApplyGravity()
     {
         // check if falling
-        bool falling = velocity.y < 0f || !Input.GetButton("Jump");
+        bool falling = velocity.y < 0f || !Input.GetButton("Jump"); //&& !PulseJoystickButton1();
         float multiplier = falling ? 2f : 1f;
 
         // apply gravity and terminal velocity
@@ -157,4 +158,16 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private bool PulseJoystickButton1()
+    {
+         foreach (KeyCode keyCode in System.Enum.GetValues(typeof(KeyCode)))
+        {
+                if (Input.GetKeyDown(keyCode) && keyCode.ToString() == "JoystickButton1")
+                {
+                    return true;
+                }
+        }
+
+        return false;
+    }
 }

@@ -39,15 +39,13 @@ public class PlayerWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || PulseJoystickButton5())
         {
             shooting = true;
-            // Reproduce shot sound
             
-
         }
 
-        if(Input.GetMouseButtonUp(0))
+        if(Input.GetMouseButtonUp(0)  || UpJoystickButton5())
         {
             shooting = false;
         }
@@ -81,5 +79,33 @@ public class PlayerWeapon : MonoBehaviour
         reloadTime = 0.3f;
     }
 
+    // Function for controlling pistol
+    private bool PulseJoystickButton5()
+    {
+         foreach (KeyCode keyCode in System.Enum.GetValues(typeof(KeyCode)))
+        {
+                if (Input.GetKeyDown(keyCode) && keyCode.ToString() == "JoystickButton5")
+                {
+                    return true;
+                }
+        }
+
+        return false;
+    }
+
+    private bool UpJoystickButton5()
+    {
+         foreach (KeyCode keyCode in System.Enum.GetValues(typeof(KeyCode)))
+        {
+                if (Input.GetKeyUp(keyCode) && keyCode.ToString() == "JoystickButton5")
+                {
+                    return true;
+                }
+        }
+
+        return false;
+    }
+
+    
 
 }

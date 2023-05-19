@@ -20,7 +20,7 @@ public class ManagerPause : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || PulseJoystickButton9())
         {
             // Detener sonidos
 
@@ -54,5 +54,18 @@ public class ManagerPause : MonoBehaviour
     {
         Application.Quit(); // Salir de la aplicación (solo funciona en compilaciones)
         Debug.Log("Saliendo del juego"); // Mensaje de depuración para el editor de Unity
+    }
+
+    private bool PulseJoystickButton9()
+    {
+         foreach (KeyCode keyCode in System.Enum.GetValues(typeof(KeyCode)))
+        {
+                if (Input.GetKeyDown(keyCode) && keyCode.ToString() == "JoystickButton9")
+                {
+                    return true;
+                }
+        }
+
+        return false;
     }
 }

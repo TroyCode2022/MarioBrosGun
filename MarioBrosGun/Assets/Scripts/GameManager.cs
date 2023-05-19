@@ -27,6 +27,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void Update()
+    {
+        if (Input.anyKeyDown)
+        {
+            foreach (KeyCode keyCode in System.Enum.GetValues(typeof(KeyCode)))
+            {
+                if (Input.GetKeyDown(keyCode))
+                {
+                    Debug.Log("Tecla pulsada: " + keyCode.ToString());
+                    break;
+                }
+            }
+        }
+    }
+
     private void Start()
     {
         Application.targetFrameRate = 60;

@@ -13,7 +13,7 @@ public class Pipe : MonoBehaviour
     {
         if (connection != null && other.CompareTag("Player"))
         {
-            if (Input.GetKey(enterKeyCode)) {
+            if (Input.GetKey(enterKeyCode)  || PulseDownJoystick()) {
                 StartCoroutine(Enter(other.transform));
             }
         }
@@ -77,4 +77,12 @@ public class Pipe : MonoBehaviour
         player.localScale = endScale;
     }
 
+    public bool PulseDownJoystick()
+    {
+        float verticalInput = Input.GetAxis("Vertical");
+
+        if (verticalInput < 0)
+            return true;
+        return false;
+    }
 }
