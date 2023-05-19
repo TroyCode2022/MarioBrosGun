@@ -14,7 +14,8 @@ public class Player : MonoBehaviour
     public bool dead => deathAnimation.enabled;
     public bool starpower { get; private set; }
 
-    private Transform pistolTransform; 
+    private Transform pistolTransform;
+    private Vector3 initialPositionPistol; 
 
     private void Awake()
     {
@@ -22,6 +23,7 @@ public class Player : MonoBehaviour
         deathAnimation = GetComponent<DeathAnimation>();
         activeRenderer = smallRenderer;
         pistolTransform = transform.GetChild(2);// Obtenemos la pistola
+        initialPositionPistol = pistolTransform.position;
     }
 
     // Manejo cuando Mario es alcanzado por un enemigo
@@ -61,7 +63,7 @@ public class Player : MonoBehaviour
         // Modificación de la posición de Pistol
         Transform pistolTransform = transform.GetChild(2);
         if (pistolTransform != null) {
-            pistolTransform.position += new Vector3(0.4f, 0.2f, 0f);
+            pistolTransform.position += new Vector3(0.15f, 0.35f, 0);
         }
     }
     
@@ -80,7 +82,7 @@ public class Player : MonoBehaviour
         // Modificación de la posición de Pistol
         Transform pistolTransform = transform.GetChild(2);
         if (pistolTransform != null) {
-            pistolTransform.position -= new Vector3(0.4f, 0.2f, 0f);
+            pistolTransform.position -= new Vector3(0.15f, 0.35f, 0);
         }
     }
 
