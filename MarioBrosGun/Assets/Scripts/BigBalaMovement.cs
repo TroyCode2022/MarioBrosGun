@@ -10,14 +10,18 @@ public class BigBalaMovement : MonoBehaviour
 
     private Vector2 _direction = Vector2.left;
     private Vector2 velocity;
+    private ExplosionAnimation _explosionAnimation;
+    private AudioSource[] _audioSource;
 
 
-    //public Direction direction;
 
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        _explosionAnimation =  GetComponent<ExplosionAnimation>();
+        _audioSource = GetComponents<AudioSource>();
+
 
     }
 
@@ -42,7 +46,11 @@ public class BigBalaMovement : MonoBehaviour
             }
         }
         else
-            Destroy(gameObject);
+        {
+            _audioSource[0].Play(); 
+            _explosionAnimation.enabled = true;
+            this.enabled = false;
+        }
 
     }
     private void Hit()

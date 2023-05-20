@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BlockPoweUp : MonoBehaviour
 {
-
+    AudioSource[] audioSources;
     public enum Type
     {
         Coin,
@@ -13,6 +13,8 @@ public class BlockPoweUp : MonoBehaviour
 
     private void Start()
     {
+        audioSources = GetComponents<AudioSource>();
+        
         switch (type)
         {
             case Type.Coin:
@@ -20,7 +22,8 @@ public class BlockPoweUp : MonoBehaviour
                 break;
 
             case Type.fastShot:
-                Bullet.IncreaseSpeedBullet();
+                StartCoroutine(BulletManager.IncreaseSpeed());
+                StartCoroutine(PlayerWeapon.ReduceReloadtime());
                 break;
         }
 
@@ -29,6 +32,7 @@ public class BlockPoweUp : MonoBehaviour
 
     private IEnumerator Animate()
     {
+        
         Vector3 restingPosition = transform.localPosition;
         Vector3 animatedPosition = restingPosition + Vector3.up * 2f;
 

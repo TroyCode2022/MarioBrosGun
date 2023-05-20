@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Koopa : MonoBehaviour
 {
@@ -9,18 +10,13 @@ public class Koopa : MonoBehaviour
     private bool shelled;
     private GameObject bulletPrefab;
     private bool pushed;
-    
+    private SpriteRenderer spriteRenderer;
 
-    //private void Update()
-    //{
-    //    Rigidbody2D rb = GetComponent<Rigidbody2D>();
-    //    if (rb.velocity.magnitude > 0f && shelled && !pushed)
-    //    {
-    //        Vector2 direction = GetComponent<EntityMovement>().direction;
-    //        PushShell(direction);
-            
-    //    }
-    //}
+
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -70,10 +66,19 @@ public class Koopa : MonoBehaviour
                 health--;
                 if (health == 0)
                     Hit();
+                else
+                    StartCoroutine(CambiarColor());
 
                 bulletPrefab = other.gameObject;
             }
         }
+    }
+
+    IEnumerator CambiarColor()
+    {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.03f);
+        spriteRenderer.color = Color.white;
     }
 
     private void EnterShell(Collision2D other)

@@ -28,15 +28,15 @@ public class ManagerPause : MonoBehaviour
             if (pauseMenu.activeSelf) // Si el canvas está activo, lo desactivamos y activamos el sonido
             {
                 pauseMenu.SetActive(false);
-                foreach(AudioSource a in audios)
-                    a.Play();
+                //foreach(AudioSource a in audios)
+                //    a.Play();
                 Time.timeScale = 1f; // Restauramos la velocidad del juego
             }
             else // Si el canvas está desactivado, lo activamos y paramos el sonido
             {
                 pauseMenu.SetActive(true);
-                foreach(AudioSource a in audios)
-                    a.Pause();
+                //foreach(AudioSource a in audios)
+                //    a.Pause();
                 Time.timeScale = 0f; // Pausamos el juego
 
             }
@@ -45,8 +45,8 @@ public class ManagerPause : MonoBehaviour
 
     public void ButtonPlay()
     {
-        foreach(AudioSource a in audios) // restore sound
-            a.Play();
+        //foreach(AudioSource a in audios) // restore sound
+        //    a.Play();
         this.Start();
     }
 
