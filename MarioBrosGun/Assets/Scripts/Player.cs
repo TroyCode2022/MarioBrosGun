@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    AudioSource[] audioSources;
+
     public PlayerSpriteRenderer smallRenderer;
     public PlayerSpriteRenderer bigRenderer;
     private PlayerSpriteRenderer activeRenderer;
@@ -18,6 +20,8 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        audioSources = GetComponents<AudioSource>();
+        audioSources[0].Play();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
         deathAnimation = GetComponent<DeathAnimation>();
         activeRenderer = smallRenderer;
@@ -38,6 +42,8 @@ public class Player : MonoBehaviour
 
     public void Death()
     {
+        audioSources[0].Stop();
+        audioSources[1].Play();
         smallRenderer.enabled = false;
         bigRenderer.enabled = false;
         deathAnimation.enabled = true;
@@ -49,6 +55,7 @@ public class Player : MonoBehaviour
     {
         if (!big)
         {
+            audioSources[4].Play();
             smallRenderer.enabled = false;
             bigRenderer.enabled = true;
             activeRenderer = bigRenderer;
@@ -69,6 +76,7 @@ public class Player : MonoBehaviour
 
     public void Shrink()
     {
+        audioSources[3].Play();
         smallRenderer.enabled = true;
         bigRenderer.enabled = false;
         activeRenderer = smallRenderer;
@@ -81,7 +89,6 @@ public class Player : MonoBehaviour
         // Modificación de la posición de Pistol
         Transform pistolTransform = transform.GetChild(2);
         if (pistolTransform != null) {
-            Debug.Log("Pistola se mueve");
             pistolTransform.position = transform.GetChild(3).position;
         }
     }
@@ -111,12 +118,16 @@ public class Player : MonoBehaviour
 
     public void Starpower()
     {
+        //audioSources[2].Play();
+        
         StartCoroutine(StarpowerAnimation());
     }
 
     private IEnumerator StarpowerAnimation()
     {
         starpower = true;
+        audioSources[0].Stop();
+        audioSources[5].Play();
 
         float elapsed = 0f;
         float duration = 10f;
@@ -135,6 +146,8 @@ public class Player : MonoBehaviour
         gameObject.transform.GetChild(2).gameObject.SetActive(true);//Activar pistola
         activeRenderer.spriteRenderer.color = Color.white;
         starpower = false;
+        audioSources[5].Stop();
+        audioSources[0].Play(); 
     }
 
 }

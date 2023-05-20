@@ -68,9 +68,20 @@ public class PlayerWeapon : MonoBehaviour
     }
 
     //lo utilizaremos para el power up FastShot que incrementa la cadencia
-    static public void ReduceReloadtime()
+    static public IEnumerator ReduceReloadtime()
     {
         reloadTime = 0.15f;
+        float elapsed = 0f;
+        float duration = 10f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        reloadTime = 0.3f;
+
     }
 
     //Para cuando se acabe FastShot reseteamos a la cadencia normal

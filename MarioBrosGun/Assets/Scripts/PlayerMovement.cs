@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
         if (audioSources.Length >= 1)
         {
             // Asigna el segundo componente de audio al campo "audioJump"
-            audioJump = audioSources[0];
+            audioJump = audioSources[2];
         }
         else
         {

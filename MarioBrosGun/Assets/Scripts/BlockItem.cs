@@ -3,13 +3,18 @@ using UnityEngine;
 
 public class BlockItem : MonoBehaviour
 {
+
+    AudioSource[] audioSources;
     private void Start()
     {
+        audioSources = GetComponents<AudioSource>();
         StartCoroutine(Animate());
+        
     }
 
     private IEnumerator Animate()
     {
+        audioSources[0].Play();
         Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
         CircleCollider2D physicsCollider = GetComponent<CircleCollider2D>();
         BoxCollider2D triggerCollider = GetComponent<BoxCollider2D>();

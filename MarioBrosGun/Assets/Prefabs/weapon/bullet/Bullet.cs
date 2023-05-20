@@ -5,8 +5,20 @@ using UnityEngine;
 public static class BulletManager {
     public static float speed = 25f;
 
-    public static void IncreaseSpeed() { 
+    static  public IEnumerator IncreaseSpeed() {
+
+        float elapsed = 0f;
+        float duration = 10f;
+
         speed = 50f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        speed = 25f;
     }
 }
 public class Bullet : MonoBehaviour {
@@ -26,6 +38,7 @@ public class Bullet : MonoBehaviour {
     void FixedUpdate()
     {
         rigidbody.MovePosition(transform.position + transform.right * BulletManager.speed * Time.fixedDeltaTime);
+
     }
 
     public static void IncreaseSpeedBullet()

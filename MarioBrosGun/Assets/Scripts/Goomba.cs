@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Goomba : MonoBehaviour
@@ -5,7 +6,12 @@ public class Goomba : MonoBehaviour
     public Sprite flatSprite;
     private GameObject bulletPrefab;
     public int health = 2;
+    private SpriteRenderer spriteRenderer;
 
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -37,6 +43,8 @@ public class Goomba : MonoBehaviour
                 health--;
                 if (health == 0)
                     Hit();
+                else
+                    StartCoroutine(CambiarColor());
 
                 bulletPrefab = other.gameObject;
             }
@@ -44,12 +52,20 @@ public class Goomba : MonoBehaviour
         
     }
 
+    IEnumerator CambiarColor() 
+    {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.03f);
+        spriteRenderer.color = Color.white;
+    }
+    
+
     private void Flatten()
     {
         GetComponent<Collider2D>().enabled = false;
         GetComponent<EntityMovement>().enabled = false;
         GetComponent<AnimatedSprite>().enabled = false;
-        GetComponent<SpriteRenderer>().sprite = flatSprite;
+        spriteRenderer.sprite = flatSprite;
         Destroy(gameObject, 0.5f);
     }
 
