@@ -16,11 +16,11 @@ Ejecutar el juego en el editor o compilarlo para la plataforma deseada.
 Moverse: Flechas izquierda y derecha o teclas 'a' 'd'\
 Entrar en tubería: tecla 's' \
 Disparar: Click derecho \
-Saltar: espacio \
+Saltar: espacio 
 ## Controles por Mando PS4
 Moverse: Joystick izquierdo\
 Entrar en tubería: Joystick izquierdo hacia abajo \
 Disparar: R1 \
-Saltar: X \
+Saltar: X 
 ## Créditos
 Este proyecto fue desarrollado por Jose Manuel Troya Valero y Alvaro Pérez Lara. Los sprites y los sonidos utilizados en el juego son propiedad de Nintendo. Este proyecto se hizo con fines educativos y sin fines de lucro.
