@@ -13,7 +13,7 @@ Esperar a que Unity importe los paquetes necesarios.
 Abrir la escena principal en la carpeta "Assets/Scenes".
 Ejecutar el juego en el editor o compilarlo para la plataforma deseada.
 ## Controles
-Moverse: Flechas izquierda y derecha o teclas 'a' 'd'
+Moverse: Flechas izquierda y derecha o teclas 'a' 'd'\
 Entrar en tubería: tecla 's'
 Disparar: Click derecho
 Saltar: espacio
