@@ -13,8 +13,9 @@ Esperar a que Unity importe los paquetes necesarios.
 Abrir la escena principal en la carpeta "Assets/Scenes".
 Ejecutar el juego en el editor o compilarlo para la plataforma deseada.
 ## Controles
-Moverse: Flechas izquierda y derecha
-Agacharse: Flecha abajo
-Disparar: Barra espaciadora
+Moverse: Flechas izquierda y derecha o teclas 'a' 'd'
+Entrar en tubería: tecla 's'
+Disparar: Click derecho
+Saltar: espacio
 ## Créditos
 Este proyecto fue desarrollado por Jose Manuel Troya Valero y Alvaro Pérez Lara. Los sprites y los sonidos utilizados en el juego son propiedad de Nintendo. Este proyecto se hizo con fines educativos y sin fines de lucro.
